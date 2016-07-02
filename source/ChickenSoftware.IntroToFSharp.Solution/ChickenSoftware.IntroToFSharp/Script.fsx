@@ -13,6 +13,8 @@
 
 //Where is the bug?
 
+//how to create code
+//REPL driven development
 
 
 
