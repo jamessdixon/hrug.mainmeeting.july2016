@@ -1,0 +1,4 @@
+            string accountId = "KevinGriffensAccount";
+            string authToken = "KevinGriffenBirthday";
+            string fromPhone = "KevinGriffenCellPhone";
+            var notifier2 = new ChickenSoftware.Processor.FS.TwilioTextNotifier(accountId, authToken, fromPhone, phoneNumbers);
