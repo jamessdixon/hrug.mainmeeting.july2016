@@ -1,0 +1,751 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://sms2.cdyne.com" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:i0="https://sms2.cdyne.com" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="sms" targetNamespace="http://sms2.cdyne.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="sms2SOAPbasicHttpsBinding_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="sms2wsHttpBinding_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsp:Policy wsu:Id="sms2wsHttpBindingSecure_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:import namespace="https://sms2.cdyne.com" location="http://sms2.cdyne.com/sms.svc?wsdl=wsdl0" />
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://sms2.cdyne.com/Imports">
+      <xsd:import schemaLocation="http://sms2.cdyne.com/sms.svc?xsd=xsd0" namespace="http://sms2.cdyne.com" />
+      <xsd:import schemaLocation="http://sms2.cdyne.com/sms.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://sms2.cdyne.com/sms.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/SmsWS" />
+      <xsd:import schemaLocation="http://sms2.cdyne.com/sms.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="Isms_SimpleSMSsend_InputMessage">
+    <wsdl:part name="parameters" element="tns:SimpleSMSsend" />
+  </wsdl:message>
+  <wsdl:message name="Isms_SimpleSMSsend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SimpleSMSsendResponse" />
+  </wsdl:message>
+  <wsdl:message name="Isms_SimpleSMSsendWithPostback_InputMessage">
+    <wsdl:part name="parameters" element="tns:SimpleSMSsendWithPostback" />
+  </wsdl:message>
+  <wsdl:message name="Isms_SimpleSMSsendWithPostback_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SimpleSMSsendWithPostbackResponse" />
+  </wsdl:message>
+  <wsdl:message name="Isms_AdvancedSMSsend_InputMessage">
+    <wsdl:part name="parameters" element="tns:AdvancedSMSsend" />
+  </wsdl:message>
+  <wsdl:message name="Isms_AdvancedSMSsend_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AdvancedSMSsendResponse" />
+  </wsdl:message>
+  <wsdl:message name="Isms_GetMessageStatusWebPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessageStatusWebPost" />
+  </wsdl:message>
+  <wsdl:message name="Isms_GetMessageStatusWebPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessageStatusWebPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="Isms_GetMessageStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessageStatus" />
+  </wsdl:message>
+  <wsdl:message name="Isms_GetMessageStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessageStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="Isms_GetMessageStatusByReferenceID_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessageStatusByReferenceID" />
+  </wsdl:message>
+  <wsdl:message name="Isms_GetMessageStatusByReferenceID_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetMessageStatusByReferenceIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="Isms_GetUnreadIncomingMessagesWebPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnreadIncomingMessagesWebPost" />
+  </wsdl:message>
+  <wsdl:message name="Isms_GetUnreadIncomingMessagesWebPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnreadIncomingMessagesWebPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="Isms_GetUnreadIncomingMessages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnreadIncomingMessages" />
+  </wsdl:message>
+  <wsdl:message name="Isms_GetUnreadIncomingMessages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnreadIncomingMessagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="Isms_CancelMessageWebPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelMessageWebPost" />
+  </wsdl:message>
+  <wsdl:message name="Isms_CancelMessageWebPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelMessageWebPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="Isms_CancelMessage_InputMessage">
+    <wsdl:part name="parameters" element="tns:CancelMessage" />
+  </wsdl:message>
+  <wsdl:message name="Isms_CancelMessage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CancelMessageResponse" />
+  </wsdl:message>
+  <wsdl:message name="Isms_GetKeywordsWebPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetKeywordsWebPost" />
+  </wsdl:message>
+  <wsdl:message name="Isms_GetKeywordsWebPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetKeywordsWebPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="Isms_GetKeywords_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetKeywords" />
+  </wsdl:message>
+  <wsdl:message name="Isms_GetKeywords_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetKeywordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="Isms_AssignKeyword_InputMessage">
+    <wsdl:part name="parameters" element="tns:AssignKeyword" />
+  </wsdl:message>
+  <wsdl:message name="Isms_AssignKeyword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AssignKeywordResponse" />
+  </wsdl:message>
+  <wsdl:message name="Isms_RemoveKeyword_InputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveKeyword" />
+  </wsdl:message>
+  <wsdl:message name="Isms_RemoveKeyword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RemoveKeywordResponse" />
+  </wsdl:message>
+  <wsdl:portType name="Isms">
+    <wsdl:operation name="SimpleSMSsend">
+      <wsdl:input wsaw:Action="http://sms2.cdyne.com/Isms/SimpleSMSsend" message="tns:Isms_SimpleSMSsend_InputMessage" />
+      <wsdl:output wsaw:Action="http://sms2.cdyne.com/Isms/SimpleSMSsendResponse" message="tns:Isms_SimpleSMSsend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SimpleSMSsendWithPostback">
+      <wsdl:input wsaw:Action="http://sms2.cdyne.com/Isms/SimpleSMSsendWithPostback" message="tns:Isms_SimpleSMSsendWithPostback_InputMessage" />
+      <wsdl:output wsaw:Action="http://sms2.cdyne.com/Isms/SimpleSMSsendWithPostbackResponse" message="tns:Isms_SimpleSMSsendWithPostback_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AdvancedSMSsend">
+      <wsdl:input wsaw:Action="http://sms2.cdyne.com/Isms/AdvancedSMSsend" message="tns:Isms_AdvancedSMSsend_InputMessage" />
+      <wsdl:output wsaw:Action="http://sms2.cdyne.com/Isms/AdvancedSMSsendResponse" message="tns:Isms_AdvancedSMSsend_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatusWebPost">
+      <wsdl:input wsaw:Action="http://sms2.cdyne.com/Isms/GetMessageStatusWebPost" message="tns:Isms_GetMessageStatusWebPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://sms2.cdyne.com/Isms/GetMessageStatusWebPostResponse" message="tns:Isms_GetMessageStatusWebPost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatus">
+      <wsdl:input wsaw:Action="http://sms2.cdyne.com/Isms/GetMessageStatus" message="tns:Isms_GetMessageStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://sms2.cdyne.com/Isms/GetMessageStatusResponse" message="tns:Isms_GetMessageStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatusByReferenceID">
+      <wsdl:input wsaw:Action="http://sms2.cdyne.com/Isms/GetMessageStatusByReferenceID" message="tns:Isms_GetMessageStatusByReferenceID_InputMessage" />
+      <wsdl:output wsaw:Action="http://sms2.cdyne.com/Isms/GetMessageStatusByReferenceIDResponse" message="tns:Isms_GetMessageStatusByReferenceID_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnreadIncomingMessagesWebPost">
+      <wsdl:input wsaw:Action="http://sms2.cdyne.com/Isms/GetUnreadIncomingMessagesWebPost" message="tns:Isms_GetUnreadIncomingMessagesWebPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://sms2.cdyne.com/Isms/GetUnreadIncomingMessagesWebPostResponse" message="tns:Isms_GetUnreadIncomingMessagesWebPost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetUnreadIncomingMessages">
+      <wsdl:input wsaw:Action="http://sms2.cdyne.com/Isms/GetUnreadIncomingMessages" message="tns:Isms_GetUnreadIncomingMessages_InputMessage" />
+      <wsdl:output wsaw:Action="http://sms2.cdyne.com/Isms/GetUnreadIncomingMessagesResponse" message="tns:Isms_GetUnreadIncomingMessages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessageWebPost">
+      <wsdl:input wsaw:Action="http://sms2.cdyne.com/Isms/CancelMessageWebPost" message="tns:Isms_CancelMessageWebPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://sms2.cdyne.com/Isms/CancelMessageWebPostResponse" message="tns:Isms_CancelMessageWebPost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessage">
+      <wsdl:input wsaw:Action="http://sms2.cdyne.com/Isms/CancelMessage" message="tns:Isms_CancelMessage_InputMessage" />
+      <wsdl:output wsaw:Action="http://sms2.cdyne.com/Isms/CancelMessageResponse" message="tns:Isms_CancelMessage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKeywordsWebPost">
+      <wsdl:input wsaw:Action="http://sms2.cdyne.com/Isms/GetKeywordsWebPost" message="tns:Isms_GetKeywordsWebPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://sms2.cdyne.com/Isms/GetKeywordsWebPostResponse" message="tns:Isms_GetKeywordsWebPost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetKeywords">
+      <wsdl:input wsaw:Action="http://sms2.cdyne.com/Isms/GetKeywords" message="tns:Isms_GetKeywords_InputMessage" />
+      <wsdl:output wsaw:Action="http://sms2.cdyne.com/Isms/GetKeywordsResponse" message="tns:Isms_GetKeywords_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AssignKeyword">
+      <wsdl:input wsaw:Action="http://sms2.cdyne.com/Isms/AssignKeyword" message="tns:Isms_AssignKeyword_InputMessage" />
+      <wsdl:output wsaw:Action="http://sms2.cdyne.com/Isms/AssignKeywordResponse" message="tns:Isms_AssignKeyword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RemoveKeyword">
+      <wsdl:input wsaw:Action="http://sms2.cdyne.com/Isms/RemoveKeyword" message="tns:Isms_RemoveKeyword_InputMessage" />
+      <wsdl:output wsaw:Action="http://sms2.cdyne.com/Isms/RemoveKeywordResponse" message="tns:Isms_RemoveKeyword_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="sms2SOAPbasicHttpBinding" type="tns:Isms">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SimpleSMSsend">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/SimpleSMSsend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SimpleSMSsendWithPostback">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/SimpleSMSsendWithPostback" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdvancedSMSsend">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/AdvancedSMSsend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatusWebPost">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/GetMessageStatusWebPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatus">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/GetMessageStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatusByReferenceID">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/GetMessageStatusByReferenceID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnreadIncomingMessagesWebPost">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/GetUnreadIncomingMessagesWebPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnreadIncomingMessages">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/GetUnreadIncomingMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessageWebPost">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/CancelMessageWebPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessage">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/CancelMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKeywordsWebPost">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/GetKeywordsWebPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKeywords">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/GetKeywords" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssignKeyword">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/AssignKeyword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveKeyword">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/RemoveKeyword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="sms2SOAPbasicHttpsBinding" type="tns:Isms">
+    <wsp:PolicyReference URI="#sms2SOAPbasicHttpsBinding_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SimpleSMSsend">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/SimpleSMSsend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SimpleSMSsendWithPostback">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/SimpleSMSsendWithPostback" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdvancedSMSsend">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/AdvancedSMSsend" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatusWebPost">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/GetMessageStatusWebPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatus">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/GetMessageStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatusByReferenceID">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/GetMessageStatusByReferenceID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnreadIncomingMessagesWebPost">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/GetUnreadIncomingMessagesWebPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnreadIncomingMessages">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/GetUnreadIncomingMessages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessageWebPost">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/CancelMessageWebPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessage">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/CancelMessage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKeywordsWebPost">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/GetKeywordsWebPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKeywords">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/GetKeywords" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssignKeyword">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/AssignKeyword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveKeyword">
+      <soap:operation soapAction="http://sms2.cdyne.com/Isms/RemoveKeyword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="sms2wsHttpBinding" type="tns:Isms">
+    <wsp:PolicyReference URI="#sms2wsHttpBinding_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SimpleSMSsend">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/SimpleSMSsend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SimpleSMSsendWithPostback">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/SimpleSMSsendWithPostback" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdvancedSMSsend">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/AdvancedSMSsend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatusWebPost">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/GetMessageStatusWebPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatus">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/GetMessageStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatusByReferenceID">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/GetMessageStatusByReferenceID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnreadIncomingMessagesWebPost">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/GetUnreadIncomingMessagesWebPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnreadIncomingMessages">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/GetUnreadIncomingMessages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessageWebPost">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/CancelMessageWebPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessage">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/CancelMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKeywordsWebPost">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/GetKeywordsWebPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKeywords">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/GetKeywords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssignKeyword">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/AssignKeyword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveKeyword">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/RemoveKeyword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="sms2wsHttpBindingSecure" type="tns:Isms">
+    <wsp:PolicyReference URI="#sms2wsHttpBindingSecure_policy" />
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="SimpleSMSsend">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/SimpleSMSsend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SimpleSMSsendWithPostback">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/SimpleSMSsendWithPostback" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AdvancedSMSsend">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/AdvancedSMSsend" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatusWebPost">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/GetMessageStatusWebPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatus">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/GetMessageStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetMessageStatusByReferenceID">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/GetMessageStatusByReferenceID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnreadIncomingMessagesWebPost">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/GetUnreadIncomingMessagesWebPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetUnreadIncomingMessages">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/GetUnreadIncomingMessages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessageWebPost">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/CancelMessageWebPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelMessage">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/CancelMessage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKeywordsWebPost">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/GetKeywordsWebPost" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetKeywords">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/GetKeywords" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AssignKeyword">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/AssignKeyword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RemoveKeyword">
+      <soap12:operation soapAction="http://sms2.cdyne.com/Isms/RemoveKeyword" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="sms">
+    <wsdl:port name="sms2SOAPbasicHttpBinding" binding="tns:sms2SOAPbasicHttpBinding">
+      <soap:address location="http://sms2.cdyne.com/sms.svc/Soap" />
+    </wsdl:port>
+    <wsdl:port name="sms2SOAPbasicHttpsBinding" binding="tns:sms2SOAPbasicHttpsBinding">
+      <soap:address location="https://cciad1wcf.cdyne.net/sms.svc/SecureSoap" />
+    </wsdl:port>
+    <wsdl:port name="sms2wsHttpBinding" binding="tns:sms2wsHttpBinding">
+      <soap12:address location="http://sms2.cdyne.com/sms.svc/WS" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>http://sms2.cdyne.com/sms.svc/WS</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+    <wsdl:port name="sms2wsHttpBindingSecure" binding="tns:sms2wsHttpBindingSecure">
+      <soap12:address location="https://cciad1wcf.cdyne.net/sms.svc/WS" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>https://cciad1wcf.cdyne.net/sms.svc/WS</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
