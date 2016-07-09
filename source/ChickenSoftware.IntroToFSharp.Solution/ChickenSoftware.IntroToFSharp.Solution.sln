@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChickenSoftware.ActiveDirec
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChickenSoftware.CustomerProcessor.CS", "ChickenSoftware.CustomerProcessor.CS\ChickenSoftware.CustomerProcessor.CS.csproj", "{0DF8151D-1417-420F-AAAC-EC0C810FC1CA}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Chickensoftware.CustomerProcessor.FS", "ChickenSoftware.CustomerProcessor.FS\Chickensoftware.CustomerProcessor.FS.fsproj", "{337C3389-068A-49CD-8600-041AF534E6BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,22 @@ Global
 		{0DF8151D-1417-420F-AAAC-EC0C810FC1CA}.Release|x64.Build.0 = Release|Any CPU
 		{0DF8151D-1417-420F-AAAC-EC0C810FC1CA}.Release|x86.ActiveCfg = Release|Any CPU
 		{0DF8151D-1417-420F-AAAC-EC0C810FC1CA}.Release|x86.Build.0 = Release|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Debug|ARM.Build.0 = Debug|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Debug|x64.Build.0 = Debug|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Debug|x86.Build.0 = Debug|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Release|ARM.ActiveCfg = Release|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Release|ARM.Build.0 = Release|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Release|x64.ActiveCfg = Release|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Release|x64.Build.0 = Release|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Release|x86.ActiveCfg = Release|Any CPU
+		{337C3389-068A-49CD-8600-041AF534E6BD}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
