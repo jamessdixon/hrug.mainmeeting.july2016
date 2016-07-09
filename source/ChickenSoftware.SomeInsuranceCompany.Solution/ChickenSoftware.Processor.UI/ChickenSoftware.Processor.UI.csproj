@@ -59,10 +59,6 @@
       <Project>{0df8151d-1417-420f-aaac-ec0c810fc1ca}</Project>
       <Name>ChickenSoftware.Processor</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ChickenSoftware.Processor.FS\ChickenSoftware.Processor.FS.fsproj">
-      <Project>{1903aa7e-eb68-43f7-9ea5-a5652e022948}</Project>
-      <Name>ChickenSoftware.Processor.FS</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
